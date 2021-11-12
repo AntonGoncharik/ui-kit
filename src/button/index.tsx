@@ -8,7 +8,7 @@ const Button: FC<ButtonProps> = (props) => {
     <button className={style.button} {...props}>
       {props.children}
     </button>
-  )
-}
+  );
+};
 
 export default Button;

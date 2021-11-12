@@ -1,5 +1,5 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'production',
@@ -11,50 +11,44 @@ module.exports = {
     clean: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx']
+    extensions: ['.ts', '.tsx'],
   },
   externals: {
-    react: 'react'
+    react: 'react',
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
         use: ['ts-loader'],
-        exclude: ['/node_modules']
+        exclude: ['/node_modules'],
       },
       {
         test: /\.module\.(scss|sass)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-modules-typescript-loader",
+          'css-modules-typescript-loader',
           {
             loader: 'css-loader',
             options: {
               modules: {
                 localIdentName: 'style_[local]__[hash:base64:5]',
-              }
-            }
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  [
-                    "postcss-preset-env"
-                  ],
-                ],
               },
             },
           },
-          "sass-loader",
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [['postcss-preset-env']],
+              },
+            },
+          },
+          'sass-loader',
         ],
-        exclude: ['/node_modules']
+        exclude: ['/node_modules'],
       },
-    ]
+    ],
   },
-  plugins: [
-    new MiniCssExtractPlugin(),
-  ],
-}
+  plugins: [new MiniCssExtractPlugin()],
+};
